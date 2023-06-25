@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
@@ -29,62 +28,70 @@ namespace Exam
             Menu(dict);
         }
 
-        public static void Menu(Dictionary<string, List<string>> dict)
-        {
-            while (true)
-            {
-                Console.Clear();
-                Console.WriteLine($"Выберите пункт меню");
-                Console.WriteLine("1 - Добавить слово и перевод");
-                Console.WriteLine("2 - Удалить слово");
-                Console.WriteLine("3 - Удалить перевод");
-                Console.WriteLine("4 - Найти слово и перевод");
-                Console.WriteLine("5 - Поменять слово");
-                Console.WriteLine("6 - Поменять перевод");
-                Console.WriteLine("7 - Вывести словарь в файл");
-                Console.WriteLine("8 - Введите 0 для выхода из программы");
-                int choice = Convert.ToInt32(Console.ReadLine());
-                if (choice == 1)
-                {
-                    Console.Clear();
-                    addWord(dict);
-                }
-                else if (choice == 2)
-                {
-                    Console.Clear();
-                    delWord(dict);
-                }
-                else if (choice == 3)
-                {
-                    Console.Clear();
-                    delTranslation(dict);
-                }
-                else if (choice == 4)
-                {
-                    Console.Clear();
-                    searchWordAndTranslations(dict);
-                }
-                else if (choice == 5)
-                {
-                    Console.Clear();
-                    swapWord(dict);
-                }
-                else if (choice == 6)
-                {
-                    Console.Clear();
-                    swapTranslation(dict);
-                }
-                else if (choice == 7)
-                {
-                    Console.Clear();
-                    fileTransfer(dict);
-                }else if(choice == 0)
-                {
-                    Console.Clear();
-                    Console.WriteLine($"Спасибо, что пользовались нашей программой. Заходите ещё!");
-                    break;
-                }
-            }
+        public static void Menu(Dictionary<string, List<string>> dict) 
+        { 
+            while (true) 
+            { 
+                Console.Clear(); 
+                Console.WriteLine($"Выберите пункт меню"); 
+                Console.WriteLine("1 - Добавить слово и перевод"); 
+                Console.WriteLine("2 - Удалить слово"); 
+                Console.WriteLine("3 - Удалить перевод"); 
+                Console.WriteLine("4 - Найти слово и перевод"); 
+                Console.WriteLine("5 - Поменять слово"); 
+                Console.WriteLine("6 - Поменять перевод"); 
+                Console.WriteLine("7 - Вывести словарь в файл"); 
+                Console.WriteLine("8 - Введите 0 для выхода из программы"); 
+
+                ConsoleKeyInfo keyInfo; keyInfo = Console.ReadKey();
+                
+                int choice = Convert.ToInt32(Console.ReadLine()); 
+                if (keyInfo.Key >= ConsoleKey.D1 && keyInfo.Key <= ConsoleKey.D8) 
+                { 
+                    if (keyInfo.Key == ConsoleKey.D1) 
+                    { 
+                        Console.Clear(); addWord(dict); 
+                    } 
+                    else if (keyInfo.Key == ConsoleKey.D2) 
+                    { 
+                        Console.Clear(); 
+                        delWord(dict); 
+                    } 
+                    else if (keyInfo.Key == ConsoleKey.D3) 
+                    { 
+                        Console.Clear(); 
+                        delTranslation(dict); 
+                    } 
+                    else if (keyInfo.Key == ConsoleKey.D4) 
+                    { 
+                        Console.Clear(); 
+                        searchWordAndTranslations(dict); 
+                    } 
+                    else if (keyInfo.Key == ConsoleKey.D5) 
+                    { 
+                        Console.Clear(); 
+                        swapWord(dict); } 
+                    else if (keyInfo.Key == ConsoleKey.D6) 
+                    { 
+                        Console.Clear(); 
+                        swapTranslation(dict); 
+                    } 
+                    else if (keyInfo.Key == ConsoleKey.D7) 
+                    { 
+                        Console.Clear(); 
+                        fileTransfer(dict); 
+                    } 
+                    else if (keyInfo.Key == ConsoleKey.D8) 
+                    { 
+                        Console.Clear(); 
+                        Console.WriteLine($"Спасибо, что пользовались нашей программой. Заходите ещё!"); 
+                        break; 
+                    } 
+                } else 
+                { 
+                    Console.WriteLine("Неверный ввод"); 
+                } 
+            } 
         }
 
         public static void addWord(Dictionary<string, List<string>> myDict)
