@@ -45,7 +45,6 @@ namespace Exam
 
                 ConsoleKeyInfo keyInfo; keyInfo = Console.ReadKey();
                 
-                int choice = Convert.ToInt32(Console.ReadLine()); 
                 if (keyInfo.Key >= ConsoleKey.D1 && keyInfo.Key <= ConsoleKey.D8) 
                 { 
                     if (keyInfo.Key == ConsoleKey.D1) 
